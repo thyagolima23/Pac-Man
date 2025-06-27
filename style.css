@@ -1,340 +1,193 @@
+/* ======== GERAL ======== */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: black;
-    font-family: 'Bungee' cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
 }
 
-#logo{
-    width: 600px;
+h2 {
+  color: yellow;
+  text-shadow: 1px 1px red;
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
 }
 
-h2{
-    margin: -30px auto 5px auto;
-    color: yellow;
-    font-size: 28px;
-    font-weight: lighter;
-    text-transform: uppercase;
-    text-shadow: 1.5px 1.5px 0 red;
+#logo {
+  width: 400px;
 }
 
-#computer{
-    margin-bottom: 25px;
-    color: yellow;
-    font-size: 20px;
-    font-weight: lighter;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 0 red;
-
+#play {
+  position: absolute;
+  top: 80px;
+  padding: 15px 25px;
+  color: black;
+  background-color: yellow;
+  border: 2px solid red;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
 }
 
-#mobile{
-    display: none;
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 560px;
+  height: 560px;
+  margin: 20px 0;
 }
 
-#kbd{
-    font-size:25px;
-    padding: 5px;
+.grid div {
+  width: 20px;
+  height: 20px;
 }
 
-#play{
-    position: absolute;
-    margin-top: 80px;
-    padding: 15px 25px;
-    color:black;
-    font-family: 'Bungee' cursive;
-    font-size: 30px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: yellow;
-    border: 2px solid red;
-    z-index: 100;
-    cursor: pointer;
+/* ======== TIPOS DE CÉLULAS ======== */
+.pac-dot {
+  background-color: yellow;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 3px solid black;
 }
 
-.grid{
-    display: flex;
-    flex-wrap: wrap;
-    width: 560px;
-    height: 560px;
-    margin-bottom: 80px;
+.wall {
+  background-color: darkblue;
 }
 
-.grid div{
-    width: 80px;
-    height: 80px;
+.empty {
+  background-color: black;
 }
 
-.pac-dot{
-    background-color: yellow;
-    border: 7px solid black;
-    border: 10px;
-    box-sizing: border-box;
+.ghost-lair {
+  background-color: #222;
 }
 
-.wall{
-    background-color: darkblue;
+/* ======== PAC-MAN ======== */
+.pac-man {
+  background-image: url('./img/pacman.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: chomp 0.3s infinite;
+  transform: rotate(0deg);
 }
 
-.power-pellet{
-    background-color: transparent;
-    
+.pac-man.left {
+  transform: rotate(180deg);
+}
+.pac-man.right {
+  transform: rotate(0deg);
+}
+.pac-man.up {
+  transform: rotate(270deg);
+}
+.pac-man.down {
+  transform: rotate(90deg);
 }
 
-.blinky{
-    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACNSURBVDiNnZJBCsIwDIS7v/8z7k4gQkJmZ2");
-    filter: contrast(150%);
-    border: 0;
-    border-radius: 0 !important;
-    transform: rotate(0deg) !important;
-    background-color: transparent !important;
-
+@keyframes chomp {
+  0%   { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); }
+  50%  { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); }
+  100% { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); }
 }
 
-.pinky{
-    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACNSURBVDiNnZJBCsIwDIS7v/8z7k4gQkJmZ2");
-    filter: contrast(150%);
-    border: 0;
-    border-radius: 0 !important;
-    transform: rotate(0deg) !important;
-    background-color: transparent !important;
+/* ======== FANTASMAS ======== */
+.ghost {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.inky{
-    content: url("data:image/png;based64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACNSURBVDiNnZJBCsIwDIS7v/8z7k4gQkJmZ2");
-    border: 0;
-    background-color: transparent !important;
-    border-radius: 0 !important;
-    transform: rotate(0deg) !important;
+.blinky {
+  background-image: url('./img/blinky.png');
 }
 
-.clyde{
-    content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACNSURBVDiNnZJBCsIwDIS7v/8z7k4gQkJmZ2");
-    border: 0;
-    background-color: transparent !important;
-    border-radius: 0 !important;
-    transform: rotate(0deg) !important;
+.pinky {
+  background-image: url('./img/pinky.png');
 }
 
-.scared-ghost{
-    content: url ("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACNSURBVDiNnZJBCsIwDIS7v/8z7k4gQkJmZ2");
-    border:0;
-    border-radius: 0;
-    background-color: transparent !important;
+.inky {
+  background-image: url('./img/inky.png');
 }
 
-.pac-man{
-    background-color: yellow;
-    border-radius: 10px;
-    border: none;
-    transform: rotate(115deg);
+.clyde {
+  background-image: url('./img/clyde.png');
 }
 
-.pac-man::before, .pac-man::after{
-    position: absolute;
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
+.scared-ghost {
+  background-image: url('./img/scared.png') !important;
 }
 
-.pac-man::before{
-    border-radius: 50px, 0 0 0;
-    background-color: black;
-    background-color: black;
+/* ======== MENSAGENS ======== */
+.gameOver, .won {
+  position: absolute;
+  top: 80px;
+  width: 300px;
+  height: 100px;
+  background-color: yellow;
+  color: black;
+  font-size: 24px;
+  font-family: 'Press Start 2P';
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  text-shadow: 1px 1px red;
 }
 
-pac-man::after{
-    border-radius: 50px, 0 0 0;
-    background-color: yellow;
-    transform-origin: bottom right;
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    -webkit-animation: eat .5s infinite;
-    animation: eat .5s infinite;
-    background-image: url("data:image/svg+xml;base64,PD94");
-    background-size: 40%;
-    background-repeat: no-repeat;
-    background-position: center;
+.gameOver::after {
+  content: "GAME OVER";
 }
 
-@-webkit-keyframes eat{
-    0%{
-        -webkit-transform: rotate(-90deg);
-        transform: rotate(-90deg);
-    }
-    25%{
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-    }
-    50%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    75%{
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-    }
-    100%{
-        -webkit-transform: rotate(-90deg);
-        transform: rotate(-90deg);
-    }
-
+.won::after {
+  content: "YOU WON!";
 }
 
-@keyframes eat{
-    0%{
-        transform: rotate(-90deg);
-    }
-    50%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(-90deg);
-    }
+/* ======== BOTÃO RESTART ======== */
+.restart {
+  margin-top: 200px;
+  background-color: black;
+  border: 2px solid red;
+  color: yellow;
+  font-size: 20px;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P';
+  cursor: pointer;
+  z-index: 101;
+  text-shadow: 1px 1px red;
 }
 
-.gameOver, .won{
-    position: absolute;
-    margin-top: 80px;
-    width: 396px;
-    height: 100px;
-    border: 2px solid red;
-    text-shadow: 1px 1px 0 red;
-    background-color: yellow;
-    color: black;
-    font-size: 40px;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
+.restart:hover {
+  transform: scale(1.05);
 }
 
-.gameOver::after{
-    content: "GAME OVER";
-    position: absolute;
-}
+/* ======== RESPONSIVO ======== */
+@media screen and (max-width: 600px) {
+  .grid {
+    width: 90vw;
+    height: 90vw;
+  }
 
-.won::after{
-    content: "YOU WON";
-    position: absolute;
-}
+  .grid div {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
 
-.restart{
-    position: absolute;
-    width: 150px;
-    height: 40px;
-    margin-top: 100px;
-    background-color: black;
-    border: 2px solid red;
-    border-radius: 5px;
-    z-index: 200;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Bungee' cursive;
-    font-size: 22px;
-    letter-spacing: 1.5px;
-    color: yellow;
-    text-shadow: 1px 1px 0 red;
-}
+  #logo {
+    width: 90vw;
+  }
 
-.restart:hover{
-    transform: scale(1.1);
-}
+  #play, .gameOver, .won {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 
-.restart::after{
-    content: "RESTART";
-    position: absolute;
-}
-
-footer{
-    color: aliceblue;
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    bottom: 30px;
-    z-index: -2;
-}
-
-
-/*RESPONSIVE*/
-@media screen and (max-width: 1024px) {
-    #computer{
-        color: transparent;
-        text-shadow: none;
-    }
-    #mobile{
-        display: block;
-        margin: -20px auto -5px auto;
-        color: yellow;
-        font-size: 20px;
-        font-weight: lighter;
-        text-align: center;
-        text-transform: uppercase;
-        text-shadow: 1px 1px 0 red;
-    }
-
-}
-@media screen and (max-width:670px){
-    body{
-        margin: 0;
-    }
-    #logo{
-        width: 100vw;
-    }
-    h2{
-        margin: -20px auto 20px auto;
-        font-size: 20px;
-    }
-    #computer{
-        display: none;
-    }
-    #mobile{
-        margin: -10px 5px -5px 5px;
-        font-size: 15px;
-    }
-    #play, .gameOver, .won{
-        margin-top: 13px;
-        font-size: 20px;
-    }
-    .grid{
-        width: 98vw;
-        height: 98vw;
-        margin-bottom: 40px;
-    }
-    .grid div{
-        width: 3.5vw;
-        height: 3.5vw;
-    }
-    .pac-dot{
-        border: 5px solid black;
-        border-radius: 50%;
-    }
-    .clyde, .pinky, .inky, .blinky{
-        border: none;
-    }
-    .pac-man{
-        border-radius: 50%;
-        border: none;
-    }
-    .pac-man::before, pac-man::after{
-        width: 1.75vw;
-        height: 1.75vw;
-    }
-    .gameOver, .won{
-        width: 90vw;
-        height: 13vh;
-        padding: 5px 0;
-    }
-    .restart{
-        margin-top: 25px;
-        font-size: 20px;
-    }
-    footer{
-        font-size:15px;
-        text-align: center;
-    }
+  .restart {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
 }

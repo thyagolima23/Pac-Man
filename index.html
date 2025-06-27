@@ -1,23 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pac-Man</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/2c0f8b1d3e.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pac-Man</title>
+
+  <!-- Fonte para título e botões -->
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet" />
+
+  <!-- Seu CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Ícones FontAwesome (não obrigatórios) -->
+  <script src="https://kit.fontawesome.com/2c0f8b1d3e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-   <button id="play" onclick="document.getElementById('play').style.display='none'; document.getElementById('h2bestScore').style.display='block'; document.getElementById('footer').style.display='none';
-   document.getElementById('mobile').style.display='none';">Clique para começar</button>
-   <script src="script.js" charset="utf-8"></script>
-   <img src="/img/pngegg.png" alt="Logo Pac-Man" id="logo">
-   <h2>Pontuação: <span id="score">0</span></h2>
-   <p id="computer">Use <kbd></kbd> <kbd></kbd> <kbd></kbd> <kbd></kbd> para jogar</p>
-   <p id="mobile">Deslize para cima, baixo, esquerda ou direita para mover o Pac-Man</p>
-   <div class="grid"></div>
-   <h2 id="h2bestScore">Melhor pontuação: <span id="bestScore">0</span></h2>
-       <i class="fas fa-play"></i> JOGAR
+  <!-- Botão de início -->
+  <button
+    id="play"
+    onclick="
+      this.style.display='none';
+      document.getElementById('h2bestScore').style.display='block';
+      document.getElementById('footer').style.display='none';
+      document.getElementById('mobile').style.display='none';
+    "
+  >
+    Clique para começar
+  </button>
+
+  <!-- Logo do jogo -->
+  <img src="img/pngegg.png" alt="Logo Pac-Man" id="logo" />
+
+  <!-- Pontuação atual -->
+  <h2>Pontuação: <span id="score">0</span></h2>
+
+  <!-- Instruções para computador -->
+  <p id="computer">Use <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> para jogar</p>
+
+  <!-- Instruções para mobile -->
+  <p id="mobile">Deslize para cima, baixo, esquerda ou direita para mover o Pac-Man</p>
+
+  <!-- Tabuleiro do jogo -->
+  <div class="grid"></div>
+
+  <!-- Melhor pontuação -->
+  <h2 id="h2bestScore" style="display: none;">Melhor pontuação: <span id="bestScore">0</span></h2>
+
+  <!-- Rodapé -->
+  <footer id="footer">
+    Criado por Você © 2025
+  </footer>
+
+  <!-- Seu JavaScript -->
+  <script src="script.js" charset="utf-8"></script>
 </body>
+
 </html>
